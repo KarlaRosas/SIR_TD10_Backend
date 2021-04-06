@@ -1,6 +1,7 @@
-package fr.istic.taa.jaxrs.dao.generic;
+package fr.istic.taa.jaxrs.dao.generic;/*package fr.istic.taa.jaxrs.dao.generic;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,7 +14,10 @@ public abstract class AbstractJpaDao<K, T extends Serializable> implements IGene
 	protected EntityManager entityManager;
 
 	public AbstractJpaDao() {
+
 		this.entityManager = EntityManagerHelper.getEntityManager();
+
+
 	}
 
 	public void setClazz(Class<T> clazzToSet) {
@@ -23,6 +27,8 @@ public abstract class AbstractJpaDao<K, T extends Serializable> implements IGene
 	public T findOne(K id) {
 		return entityManager.find(clazz, id);
 	}
+
+
 
 	public List<T> findAll() {
 		return entityManager.createQuery("select e from " + clazz.getName() + " as e",clazz).getResultList();
@@ -57,4 +63,7 @@ public abstract class AbstractJpaDao<K, T extends Serializable> implements IGene
 		T entity = findOne(entityId);
 		delete(entity);
 	}
+
+
 }
+*/
