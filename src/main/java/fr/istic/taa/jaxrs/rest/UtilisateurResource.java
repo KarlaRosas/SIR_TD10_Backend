@@ -41,7 +41,13 @@ public class UtilisateurResource{
         //return new Utilisateur();
         return daob.findByName(utilisateurName);
     }
-
+    @GET
+    @Path("/All")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Utilisateur> getUtilisateurs()  {
+        //return new Utilisateur();
+        return daob.get2UtilisateursASC();
+    }
 
     @POST
     @Consumes("application/json")

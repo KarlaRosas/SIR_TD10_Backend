@@ -23,6 +23,10 @@ public class UtilisateursDAO {
                 .setParameter("name", name).getResultList();
 
     }
+    public List<Utilisateur> findThibault() {
+        return EntityManagerHelper.getEntityManager().createQuery("select u from Utilisateur as u ", Utilisateur.class).getResultList();
+
+    }
     public List<Utilisateur> UtilisateurAll() {
         return EntityManagerHelper.getEntityManager().createQuery("select u from Utilisateur as u", Utilisateur.class)
                 .getResultList();
@@ -63,12 +67,12 @@ public class UtilisateursDAO {
                 .setFirstResult(1).setMaxResults(2)
                 .getResultList();
     }
-
+/*
     public List<Utilisateur> getAllUtilisateursNatifs() {
         String query = "select * from Utilisateur ";
         return EntityManagerHelper.getEntityManager().
                 createNativeQuery(query, Utilisateur.class).getResultList();
-    }
+    }*/
     public List<Utilisateur> getUtilisateurWithFichesLoaded() {
         String query = "SELECT u from Utilisateur as u "
                 + "where s.name='Rabeea Kessal' join fetch u.fiche.name";
