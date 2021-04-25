@@ -1,6 +1,7 @@
 package fr.istic.taa.jaxrs.dao.generic;
 
 import fr.istic.taa.jaxrs.domain.Fiche;
+import fr.istic.taa.jaxrs.domain.Utilisateur;
 
 import javax.persistence.EntityTransaction;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 
 /**Query Fiche**/
 
-public class FicheDAO {
+public class FicheDAO  extends GenericDaoJpaImpl<Fiche, String> {
 
     public void saveFiche(Fiche fiche) {
         EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();
@@ -17,9 +18,15 @@ public class FicheDAO {
         EntityManagerHelper.getEntityManager().persist(fiche);
         t.commit();
     }
-    public List<Fiche> getAllFichesDao() {
+    public List<Fiche> getAllFiches() {
         String query = "select t from Fiche as t";
         return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+    }
+
+    public List<Fiche> findByName(String name) {
+        return EntityManagerHelper.getEntityManager().createQuery("select u from Fiche as u where u.name = :name", Fiche.class)
+                .setParameter("name", name).getResultList();
+
     }
 
     public List<Fiche> getAllFiche1() {
@@ -47,7 +54,7 @@ public class FicheDAO {
         return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
     }
 
-    public List<Fiche> getAllFichesParam(String name) {
+    public List<Fiche> getFichesName(String name) {
         String query = "select t from Fiche as t join t.tars as a where a.name=:name";
         return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class)
                 .setParameter("name", name).getResultList();

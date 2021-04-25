@@ -4,35 +4,26 @@ import fr.istic.taa.jaxrs.domain.Utilisateur;
 
 import java.util.List;
 
-public class DaoUtilisateur{
+public class DaoUtilisateur extends GenericDaoJpaImpl<Utilisateur, String> {
 
-    public Utilisateur save(Utilisateur b ){
-        EntityManagerHelper.beginTransaction();
-        if (b.getId() != 0) {
-            EntityManagerHelper.getEntityManager().merge(b);
-
-        } else {
-            EntityManagerHelper.getEntityManager().persist(b);
-
-        }
-        EntityManagerHelper.commit();
-        return b;
+    public List<Utilisateur> findByName(String name) {
+        return EntityManagerHelper.getEntityManager().createQuery("select u from Utilisateur as u where u.name = :name", Utilisateur.class)
+                .setParameter("name", name).getResultList();
 
     }
 
-    public Utilisateur findById(long id) {
-        return EntityManagerHelper.getEntityManager().find(Utilisateur.class, id);
+
+    public List<Utilisateur> findByFirstname(String name) {
+        return EntityManagerHelper.getEntityManager().createQuery("select u from Utilisateur as u where u.name = :name", Utilisateur.class)
+                .setParameter("name", name).getResultList();
 
     }
+
 
     public List<Utilisateur> findAll() {
-        return EntityManagerHelper.getEntityManager().createQuery("select b from Utilisateur as b", Utilisateur.class)
-                .getResultList();
-    }
-
-    public List<Utilisateur> UtilisateurAll() {
         return EntityManagerHelper.getEntityManager().createQuery("select u from Utilisateur as u", Utilisateur.class)
                 .getResultList();
     }
+
 
 }

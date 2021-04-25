@@ -1,13 +1,15 @@
 package fr.istic.taa.jaxrs.dao.generic;
 
 import fr.istic.taa.jaxrs.domain.Tableau;
+import fr.istic.taa.jaxrs.domain.Utilisateur;
+import javafx.scene.control.Tab;
 
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
 
 /**Query Tableau**/
-public class TableauDAO {
+public class TableauDAO extends GenericDaoJpaImpl<Tableau, String>{
 
     public void saveTableau(Tableau tableau) {
         EntityTransaction tab = EntityManagerHelper.getEntityManager().getTransaction();
@@ -16,9 +18,15 @@ public class TableauDAO {
         EntityManagerHelper.getEntityManager().persist(tableau);
         tab.commit();
     }
-    public List<Tableau> getAllTableauxDao() {
+
+    public List<Tableau> getAllTableaux() {
         String query = "select tab from Tableau as tab";
         return EntityManagerHelper.getEntityManager().createQuery(query, Tableau.class).getResultList();
+    }
+    public List<Tableau> findByName(String name) {
+        return EntityManagerHelper.getEntityManager().createQuery("select tab from Tableau as tab where tab.name = :name", Tableau.class)
+                .setParameter("name", name).getResultList();
+
     }
 
     public List<Tableau> getAllTableaux1() {

@@ -20,13 +20,12 @@ import java.util.logging.Logger;
 //@Produces({"application/json", "application/xml"})
 public class UtilisateurResource{
 
-    UtilisateursDAO daob = new UtilisateursDAO();
-    /*private  static  final Logger logger =Logger.getLogger(UtilisateurResource.class.getName());
+    private  static  final Logger logger =Logger.getLogger(UtilisateurResource.class.getName());
     DaoUtilisateur daoutilisateur;
 
     public UtilisateurResource(){
         this.daoutilisateur = new DaoUtilisateur();
-    }*/
+    }
 
     @GET
     @Path("/test")
@@ -39,20 +38,28 @@ public class UtilisateurResource{
     @Produces(MediaType.APPLICATION_JSON)
     public List<Utilisateur> getUtilisateurName(@PathParam("utilisateurName") String utilisateurName)  {
         //return new Utilisateur();
-        return daob.findByName(utilisateurName);
+        return daoutilisateur.findByFirstname(utilisateurName);
     }
     @GET
     @Path("/All")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Utilisateur> getUtilisateurs()  {
         //return new Utilisateur();
-        return daob.get2UtilisateursASC();
+        return daoutilisateur.findAll();
     }
 
     @POST
-    @Consumes("application/json")
+    @Path("/user")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Utilisateur createUtilisateur(Utilisateur u) {
+
+        return this.daoutilisateur.save(u);
+
+    }
+    /*
     public Response addUtilisateur(
             @Parameter(description = "User object that needs to be added to the store", required = true) Utilisateur utilisateur) {
         return Response.ok().entity("SUCCESS").build();
-    }
+    }*/
 }

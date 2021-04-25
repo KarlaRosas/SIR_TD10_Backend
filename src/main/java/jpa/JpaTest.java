@@ -30,7 +30,7 @@ public class JpaTest{
 
 		tx.begin();
 		try {
-			test.createFiches();
+			//test.createFiches();
 
 
 
@@ -41,63 +41,13 @@ public class JpaTest{
 
 		//test.listFiches();
 
-		/**Tester Query Fiche**/
-
-		FicheDAO daoFP = new FicheDAO();
-        List<Fiche> fich = daoFP.getAllFichesParam("Important");
-		System.err.println("                              ");
-        System.err.println("------------Fiches Important----------");
-        for (Fiche f: fich) {
-            System.err.println("Fiche:"+f.getId()+ " Name:  "+ f.getName());}
-
-        FicheDAO daoF = new FicheDAO();
-        List<Fiche> fiche = daoF.getAllFichesSansUtilisateurDao();
-		System.err.println("                              ");
-        System.err.println("------------Fiches----------");
-        for (Fiche f: fiche) {
-            System.err.println("Fiche:"+f.getId()+ " Name:  "+ f.getName());}
-
-		/**Tester Query Section**/
-
-        SectionDAO daoS = new SectionDAO();
-        List<Section> sect = daoS.getAllSectionParam("fiche1");
-		System.err.println("                              ");
-        System.err.println("------------Sections----------");
-        for (Section s: sect) {
-            System.err.println(s.getTableau().getName()+ "      Section Name:  "+ s.getName());}
-
-		/**Tester Query Tableau**/
-
-        TableauDAO daoT = new TableauDAO();
-        List<Tableau> tableau = daoT.getAllSectionOFTableauParam("En processus B");
-		System.err.println("                              ");
-        System.err.println("------------Tableaux----------");
-        for (Tableau t: tableau) {
-            System.err.println("Tableau Name:  "+ t.getName());}
-
-		/**Tester Query Utilisateur**/
-        UtilisateursDAO daoU = new UtilisateursDAO();
-        List<Utilisateur> Utilisateur = daoU.get2FirstDESCUtilisateurs();
-		System.err.println("                              ");
-		System.err.println("------------Utilisateurs----------");
-        for (Utilisateur u: Utilisateur) {
-            System.err.println("Utilisateur " + u.getName());}
-
-		/**Tester Query Tags**/
-		TagsDAO dao = new TagsDAO();
-		List<Tars> tags = dao.getAllTagsImportantDao();
-		System.err.println("                              ");
-		System.err.println("------------Tags----------");
-		for (Tars t: tags) {
-			System.err.println("Tags: " + t.getName()+" Name Fiche: "+t.getFiche().getName()+ " Dans la Section: "+t.getFiche().getSection().getName() +" Du "+t.getFiche().getSection().getTableau().getName() );}
-
 
 
 		manager.close();
 		System.out.println(".. done");
 		EntityManagerHelper.closeEntityManagerFactory();
-	}
-
+	}}
+/*
 	private void createFiches() {
 		int numOfFiches = manager.createQuery("Select a From Fiche a", Fiche.class).getResultList().size();
 		if (numOfFiches == 0) {
@@ -178,3 +128,4 @@ public class JpaTest{
 	}
 }
 
+*/
