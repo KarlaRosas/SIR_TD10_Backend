@@ -3,6 +3,7 @@ package fr.istic.taa.jaxrs.dao.generic;
 import fr.istic.taa.jaxrs.domain.Fiche;
 import fr.istic.taa.jaxrs.domain.Section;
 import fr.istic.taa.jaxrs.domain.Tableau;
+import fr.istic.taa.jaxrs.domain.Utilisateur;
 
 import javax.persistence.EntityTransaction;
 import java.util.List;
@@ -22,16 +23,12 @@ public class SectionDAO extends AbstractJpaDao<Section, Long> {
         entityManager.persist(fiche);
         transaction.commit();
     }*/
-}
-/*public class SectionDAO {
+    public List<Section> findByName(String name) {
+        return EntityManagerHelper.getEntityManager().createQuery("select u from Section as u where u.name = :name", Section.class)
+            .setParameter("name", name).getResultList();
 
-    public void saveSection(Section section) {
-        EntityTransaction s = EntityManagerHelper.getEntityManager().getTransaction();
-
-        s.begin();
-        EntityManagerHelper.getEntityManager().persist(section);
-        s.commit();
     }
+
     public List<Section> getAllSectionsDao() {
         String query = "select s from Section as s";
         return EntityManagerHelper.getEntityManager().createQuery(query, Section.class).getResultList();
@@ -80,4 +77,3 @@ public class SectionDAO extends AbstractJpaDao<Section, Long> {
     }
 
 }
-*/

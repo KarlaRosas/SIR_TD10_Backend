@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.dao.generic.SectionDAO;
 import fr.istic.taa.jaxrs.dao.generic.TagsDAO;
+import fr.istic.taa.jaxrs.domain.Fiche;
 import fr.istic.taa.jaxrs.domain.Section;
 import fr.istic.taa.jaxrs.domain.Tars;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -30,18 +31,26 @@ import java.util.logging.Logger;
         }
 
     @GET
-    @Path("/all")
+    @Path("name/{sectionName}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Section> getUtilisateurs()  {
-        return daosection.findAll();
+    public List<Section> getSectionName(@PathParam("sectionName") String sectionName)  {
+        return daosection.findByName(sectionName);
     }
 
     @GET
-    @Path("/{sectionId}")
-    public Section getSectionById(@PathParam("sectionId") Long sectionId)  {
-
-        return new Section();
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Section getSectionById(@PathParam("id") long id)  {
+        return daosection.findOne(id);
     }
+
+    @GET
+    @Path("/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Section> getAllSections()  {
+        return daosection.findAll();
+    }
+
 
     @POST
     @Consumes("application/json")

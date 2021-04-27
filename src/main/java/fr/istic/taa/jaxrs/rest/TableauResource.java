@@ -29,32 +29,23 @@ public class TableauResource  {
     }
 
     @GET
-    @Path("/test")
-    public String helloWorld() {
-        return "hello bebe";
-    }
-
-    @GET
-    @Path("/{tableauName}")
+    @Path("name/{tableauName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tableau> getTableauName(@PathParam("tableauName") String tableauName)  {
-        //return new Utilisateur();
         return daotableau.findByName(tableauName);
+    }
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Tableau getTableauId(@PathParam("id") long id)  {
+        return daotableau.findOne(id);
     }
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Tableau> getTableaux() {
+    public List<Tableau> getAllTableaux() {
         return daotableau.findAll();
     }
-    /*@POST
-    @Path("ajouter/")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Tableau createUtilisateur(Tableau t) {
 
-        return this.daotableau.save(t);
-
-    }*/
 
 }

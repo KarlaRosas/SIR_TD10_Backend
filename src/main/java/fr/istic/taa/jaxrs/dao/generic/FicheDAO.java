@@ -15,7 +15,7 @@ public class FicheDAO extends AbstractJpaDao<Fiche, Long> {
             super(Fiche.class);
         }
 
- /*   public void saveFiche(Fiche fiche) {
+    public void saveFiche(Fiche fiche) {
         EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();
 
         t.begin();
@@ -96,5 +96,5 @@ public class FicheDAO extends AbstractJpaDao<Fiche, Long> {
         return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
     }
 
-*/
+
 }

@@ -2,6 +2,7 @@ package fr.istic.taa.jaxrs.dao.generic;
 
 import fr.istic.taa.jaxrs.domain.Section;
 import fr.istic.taa.jaxrs.domain.Tars;
+import fr.istic.taa.jaxrs.domain.Utilisateur;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import sun.security.krb5.internal.ccache.Tag;
 
@@ -15,12 +16,10 @@ public class TagsDAO extends AbstractJpaDao<Tars, Long> {
             super(Tars.class);
         }
 
-    public void saveTag(Tars tag) {
-        EntityTransaction ta = EntityManagerHelper.getEntityManager().getTransaction();
+    public List<Tars> findByName(String name) {
+        return EntityManagerHelper.getEntityManager().createQuery("select u from Tars as u where u.name = :name", Tars.class)
+                .setParameter("name", name).getResultList();
 
-        ta.begin();
-        EntityManagerHelper.getEntityManager().persist(tag);
-        ta.commit();
     }
     public List<Tars> getAllTagsDao() {
         String query = "select ta from Tars as ta";

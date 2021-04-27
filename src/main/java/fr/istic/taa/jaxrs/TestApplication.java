@@ -34,7 +34,6 @@ public class TestApplication extends Application {
 
         final Set<Class<?>> clazzes = new HashSet<Class<?>>();
 
-        clazzes.add(PetResource.class);
         clazzes.add(HelloWorldService.class);
         clazzes.add(UserRestService.class);
         clazzes.add(OpenApiResource.class);

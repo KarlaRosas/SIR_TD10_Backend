@@ -1,17 +1,13 @@
 package fr.istic.taa.jaxrs.rest;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import fr.istic.taa.jaxrs.dao.generic.DaoUtilisateur;
-import fr.istic.taa.jaxrs.dao.generic.UtilisateursDAO;
+
+import fr.istic.taa.jaxrs.dao.generic.UtilisateurDAO;
 import fr.istic.taa.jaxrs.domain.Utilisateur;
-import io.swagger.v3.oas.annotations.Parameter;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -21,24 +17,23 @@ import java.util.logging.Logger;
 public class UtilisateurResource{
 
     private  static  final Logger logger =Logger.getLogger(UtilisateurResource.class.getName());
-    DaoUtilisateur daoutilisateur;
+    UtilisateurDAO daoutilisateur;
 
     public UtilisateurResource(){
-        this.daoutilisateur = new DaoUtilisateur();
+        this.daoutilisateur = new UtilisateurDAO();
     }
 
     @GET
-    @Path("/test")
-    public String helloWorld() {
-        return "hello bebe";
-    }
-/*http://localhost:8080/utilisateur/Thibault*/
-    @GET
-    @Path("/{utilisateurName}")
+    @Path("/name/{utilisateurName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Utilisateur> getUtilisateurName(@PathParam("utilisateurName") String utilisateurName)  {
-        //return new Utilisateur();
         return daoutilisateur.findByFirstname(utilisateurName);
+    }
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Utilisateur getUtilisateurId(@PathParam("id") long id)  {
+        return daoutilisateur.findOne(id);
     }
     @GET
     @Path("/all")

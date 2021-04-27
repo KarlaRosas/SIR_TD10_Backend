@@ -29,24 +29,23 @@ public class FicheResource{
         this.daofiche = new FicheDAO();
     }
 
+
     @GET
-    @Path("/hello")
-    public String helloWorld() {
-        return "hello fiche";
-    }
-    /*http://localhost:8080/utilisateur/Thibault*/
-   /* @GET
-    @Path("/{ficheName}")
+    @Path("name/{ficheName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Fiche> getFicheName(@PathParam("ficheName") String ficheName)  {
-        //return new Utilisateur();
         return daofiche.findByName(ficheName);
-    }*/
+    }
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Fiche getFicheId(@PathParam("id") long id)  {
+        return daofiche.findOne(id);
+    }
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Fiche> getFiches()  {
-        //return new Utilisateur();
+    public List<Fiche> getAllFiches()  {
         return daofiche.findAll();
     }
 /*

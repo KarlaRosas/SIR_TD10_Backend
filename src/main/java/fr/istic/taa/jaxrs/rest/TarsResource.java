@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.dao.generic.TagsDAO;
 
+import fr.istic.taa.jaxrs.domain.Fiche;
 import fr.istic.taa.jaxrs.domain.Tars;
 import fr.istic.taa.jaxrs.domain.Utilisateur;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -29,17 +30,25 @@ public class TarsResource {
     }
 
     @GET
-    @Path("/{tarsId}")
-    public Tars getTableauById(@PathParam("tarsId") Long tarsId)  {
-        return new Tars();
+    @Path("/name/{tagsName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Tars> getTagsName(@PathParam("tagsName") String tagsName)  {
+        return daotags.findByName(tagsName);
+    }
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Tars getTagsId(@PathParam("id") long id)  {
+        return daotags.findOne(id);
     }
 
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Tars> getUtilisateurs()  {
+    public List<Tars> getTags()  {
         return daotags.findAll();
     }
+
     @POST
     @Consumes("application/json")
     public Response addTars(
