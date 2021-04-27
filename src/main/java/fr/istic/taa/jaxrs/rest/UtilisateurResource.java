@@ -41,22 +41,22 @@ public class UtilisateurResource{
         return daoutilisateur.findByFirstname(utilisateurName);
     }
     @GET
-    @Path("/All")
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Utilisateur> getUtilisateurs()  {
         //return new Utilisateur();
         return daoutilisateur.findAll();
     }
-
+/*
     @POST
-    @Path("/user")
+    @Path("/ajouter/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Utilisateur createUtilisateur(Utilisateur u) {
 
         return this.daoutilisateur.save(u);
 
-    }
+    }*/
     /*
     public Response addUtilisateur(
             @Parameter(description = "User object that needs to be added to the store", required = true) Utilisateur utilisateur) {

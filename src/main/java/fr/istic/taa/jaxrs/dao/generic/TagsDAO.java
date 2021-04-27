@@ -1,6 +1,8 @@
 package fr.istic.taa.jaxrs.dao.generic;
 
+import fr.istic.taa.jaxrs.domain.Section;
 import fr.istic.taa.jaxrs.domain.Tars;
+import io.swagger.v3.oas.annotations.tags.Tags;
 import sun.security.krb5.internal.ccache.Tag;
 
 import javax.persistence.EntityTransaction;
@@ -8,7 +10,10 @@ import java.util.List;
 
 /**Query Tags**/
 
-public class TagsDAO {
+public class TagsDAO extends AbstractJpaDao<Tars, Long> {
+    public TagsDAO() {
+            super(Tars.class);
+        }
 
     public void saveTag(Tars tag) {
         EntityTransaction ta = EntityManagerHelper.getEntityManager().getTransaction();

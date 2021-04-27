@@ -9,7 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import fr.istic.taa.jaxrs.dao.generic.DaoUtilisateur;
 import fr.istic.taa.jaxrs.dao.generic.TableauDAO;
 import fr.istic.taa.jaxrs.domain.Tableau;
 import fr.istic.taa.jaxrs.domain.Utilisateur;
@@ -20,7 +19,7 @@ import java.util.logging.Logger;
 
 @Path("/tableau")
 @Produces({"application/json", "application/xml"})
-public class TableauResource {
+public class TableauResource  {
 
     private  static  final Logger logger =Logger.getLogger(UtilisateurResource.class.getName());
     TableauDAO daotableau;
@@ -34,7 +33,7 @@ public class TableauResource {
     public String helloWorld() {
         return "hello bebe";
     }
-    /*http://localhost:8080/utilisateur/Thibault*/
+
     @GET
     @Path("/{tableauName}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,11 +44,10 @@ public class TableauResource {
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Tableau> getTableaux()  {
-        return daotableau.getAllTableaux();
+    public List<Tableau> getTableaux() {
+        return daotableau.findAll();
     }
-
-    @POST
+    /*@POST
     @Path("ajouter/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -57,6 +55,6 @@ public class TableauResource {
 
         return this.daotableau.save(t);
 
-    }
+    }*/
 
 }

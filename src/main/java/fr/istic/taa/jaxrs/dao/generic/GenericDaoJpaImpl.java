@@ -1,4 +1,4 @@
-package fr.istic.taa.jaxrs.dao.generic;
+/*package fr.istic.taa.jaxrs.dao.generic;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;
@@ -41,3 +41,4 @@ public abstract class GenericDaoJpaImpl<T, PK extends Serializable> implements G
        }
 }
 
+*/

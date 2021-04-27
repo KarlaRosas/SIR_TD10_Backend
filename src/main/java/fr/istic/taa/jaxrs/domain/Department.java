@@ -2,11 +2,12 @@
 package fr.istic.taa.jaxrs.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Department {
+public class Department implements Serializable {
 
     private Long id;
 

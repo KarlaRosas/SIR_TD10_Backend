@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Path("/fiches")
-//@Produces({"application/json", "application/xml"})
+@Produces({"application/json", "application/xml"})
 public class FicheResource{
 
     private  static  final Logger logger =Logger.getLogger(FicheResource.class.getName());
@@ -35,21 +35,21 @@ public class FicheResource{
         return "hello fiche";
     }
     /*http://localhost:8080/utilisateur/Thibault*/
-    @GET
+   /* @GET
     @Path("/{ficheName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Fiche> getFicheName(@PathParam("ficheName") String ficheName)  {
         //return new Utilisateur();
         return daofiche.findByName(ficheName);
-    }
+    }*/
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Fiche> getFiches()  {
         //return new Utilisateur();
-        return daofiche.getAllFiches();
+        return daofiche.findAll();
     }
-
+/*
     @POST
     @Path("/ajouter/")
     @Produces(MediaType.APPLICATION_JSON)
@@ -57,7 +57,7 @@ public class FicheResource{
     public Fiche createUtilisateur(Fiche u) {
         return  this.daofiche.save(u);
     }
-    /*
+
     public Response addUtilisateur(
             @Parameter(description = "User object that needs to be added to the store", required = true) Utilisateur utilisateur) {
         return Response.ok().entity("SUCCESS").build();

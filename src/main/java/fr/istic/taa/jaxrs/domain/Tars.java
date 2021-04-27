@@ -1,13 +1,16 @@
 /**Utilisateur**/
 package fr.istic.taa.jaxrs.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 @Entity
-public class Tars {
+public class Tars implements Serializable {
     private Long id;
 
     private String name;
@@ -45,6 +48,7 @@ public class Tars {
     }
 
     @ManyToOne
+    @JsonIgnore
     public Fiche getFiche() {
         return fiche;
     }

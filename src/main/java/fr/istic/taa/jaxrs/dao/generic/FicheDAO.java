@@ -1,6 +1,7 @@
 package fr.istic.taa.jaxrs.dao.generic;
 
 import fr.istic.taa.jaxrs.domain.Fiche;
+import fr.istic.taa.jaxrs.domain.Tableau;
 import fr.istic.taa.jaxrs.domain.Utilisateur;
 
 import javax.persistence.EntityTransaction;
@@ -9,9 +10,12 @@ import java.util.List;
 
 /**Query Fiche**/
 
-public class FicheDAO  extends GenericDaoJpaImpl<Fiche, String> {
+public class FicheDAO extends AbstractJpaDao<Fiche, Long> {
+        public FicheDAO() {
+            super(Fiche.class);
+        }
 
-    public void saveFiche(Fiche fiche) {
+ /*   public void saveFiche(Fiche fiche) {
         EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();
 
         t.begin();
@@ -92,5 +96,5 @@ public class FicheDAO  extends GenericDaoJpaImpl<Fiche, String> {
         return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
     }
 
-
+*/
 }

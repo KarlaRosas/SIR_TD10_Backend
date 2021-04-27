@@ -1,12 +1,15 @@
 /**Employee**/
 package fr.istic.taa.jaxrs.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Fiche {
+public class Fiche implements Serializable {
     private Long id;
 
     private String name;
@@ -95,6 +98,7 @@ public class Fiche {
     }
 
     @ManyToOne
+    @JsonIgnore
     public Section getSection() {
         return section;
     }
@@ -104,6 +108,7 @@ public class Fiche {
     }
 
     @ManyToMany(mappedBy = "fiches", cascade = CascadeType.PERSIST)
+    @JsonIgnore
     public List<Utilisateur> getUtilisateurs() {
         return utilisateurs;
     }
