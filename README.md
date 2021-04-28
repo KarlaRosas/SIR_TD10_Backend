@@ -18,6 +18,23 @@ GET ByName: http://localhost:8080/tableau/name/{name_tableu}
 GET ALL: http://localhost:8080/api/section/all
 GET ID: http://localhost:8080/api/section/{id_section}
 GET ByName: http://localhost:8080/api/section/name/{name_section}
+
+POST http://localhost:8080/api/section/ajouter
+POST http://localhost:8080/api/tableau/{id_tableau}/ajouter-section
+
+Example Json:
+{
+    "name": "section_name"
+}
+PUT http://localhost:8080/api/section/editer
+Example Json:
+{
+    "id": 1,
+    "name": "New_name"
+}
+
+DELETE 
+
 ## Fiche kanban:
 GET ALL: http://localhost:8080/api/fiches/all
 GET ID: http://localhost:8080/api/fiches/{id_fiche}
@@ -30,3 +47,5 @@ GET ByName : http://localhost:8080/api/tags/name/{name_tag}
 GET ALL: http://localhost:8080/api/utilisateur/all
 GET ID : http://localhost:8080/api/utilisateur/{id_utilisateur}
 GET ByName : http://localhost:8080/api/utilisateur/name/{name_utilisateur}
+
+POST 

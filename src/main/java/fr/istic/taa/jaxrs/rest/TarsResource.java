@@ -1,17 +1,13 @@
 package fr.istic.taa.jaxrs.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.dao.generic.TagsDAO;
 
 import fr.istic.taa.jaxrs.domain.Fiche;
+import fr.istic.taa.jaxrs.domain.Section;
 import fr.istic.taa.jaxrs.domain.Tars;
 import fr.istic.taa.jaxrs.domain.Utilisateur;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -50,9 +46,19 @@ public class TarsResource {
     }
 
     @POST
-    @Consumes("application/json")
-    public Response addTars(
-            @Parameter(description = "Tags object that needs to be added to the store", required = true) Tars tars) {
-        return Response.ok().entity("SUCCESS").build();
+    @Path("/tags/add")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addTag(Tars tag){
+        daotags.save(tag);
+    }
+
+
+
+    @DELETE
+    @Path("/section/supprimer")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void deleteTag(@PathParam("id") Long id, Tars tag){
+        daotags.delete(tag);
     }
 }

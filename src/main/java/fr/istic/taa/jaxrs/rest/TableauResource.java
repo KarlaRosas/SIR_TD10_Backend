@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.dao.generic.TableauDAO;
+import fr.istic.taa.jaxrs.domain.Section;
 import fr.istic.taa.jaxrs.domain.Tableau;
 import fr.istic.taa.jaxrs.domain.Utilisateur;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -40,11 +41,19 @@ public class TableauResource  {
     public Tableau getTableauId(@PathParam("id") long id)  {
         return daotableau.findOne(id);
     }
+
     @GET
     @Path("/tableau/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tableau> getAllTableaux() {
         return daotableau.findAll();
+    }
+
+    @POST
+    @Path("/tableau/{id}/ajouter-section")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addSectionTabelau(@PathParam("id") Long id, Section section){
+        daotableau.addSectionTableau(id, section);
     }
 
 

@@ -12,7 +12,7 @@ import fr.istic.taa.jaxrs.domain.Utilisateur;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Path("/utilisateur")
+@Path("/api")
 //@Produces({"application/json", "application/xml"})
 public class UtilisateurResource{
 
@@ -24,19 +24,19 @@ public class UtilisateurResource{
     }
 
     @GET
-    @Path("/name/{utilisateurName}")
+    @Path("/utilisateur/name/{utilisateurName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Utilisateur> getUtilisateurName(@PathParam("utilisateurName") String utilisateurName)  {
         return daoutilisateur.findByFirstname(utilisateurName);
     }
     @GET
-    @Path("/{id}")
+    @Path("/utilisateur/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Utilisateur getUtilisateurId(@PathParam("id") long id)  {
         return daoutilisateur.findOne(id);
     }
     @GET
-    @Path("/all")
+    @Path("/utilisateur/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Utilisateur> getUtilisateurs()  {
         //return new Utilisateur();

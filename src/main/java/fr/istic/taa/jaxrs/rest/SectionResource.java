@@ -1,11 +1,6 @@
 package fr.istic.taa.jaxrs.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -51,11 +46,21 @@ import java.util.logging.Logger;
         return daosection.findAll();
     }
 
-
     @POST
-    @Consumes("application/json")
-    public Response addSection(
-            @Parameter(description = "Section object that needs to be added to the store", required = true) Section section) {
-        return Response.ok().entity("SUCCESS").build();
+    @Path("section/ajouter")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addSection(@PathParam("id") Long id, Section section){
+        daosection.save(section);
     }
+
+    @PUT
+    @Path("/section/editer")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Section editSection(Section sec){
+        return daosection.update(sec);
+    }
+
+
+
 }

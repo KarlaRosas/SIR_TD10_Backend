@@ -9,23 +9,22 @@ import javax.persistence.EntityTransaction;
 import java.util.List;
 
 
-
-/**Query Tableau**/
-import javax.persistence.EntityTransaction;
-
+/*** DAO Tableau ***/
 public class TableauDAO extends AbstractJpaDao<Tableau, Long> {
     public TableauDAO() {
         super(Tableau.class);
     }
 
     public void addSectionTableau(Long id, Section section){
-        Tableau TableauKanban = findOne(id);
-        section.setTableau(TableauKanban);
+        Tableau Tableau = findOne(id);
+        section.setTableau(Tableau);
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         entityManager.persist(section);
         transaction.commit();
     }
+
+
     public List<Tableau> findByName(String name) {
         return EntityManagerHelper.getEntityManager().createQuery("select tab from Tableau as tab where tab.name = :name", Tableau.class)
                 .setParameter("name", name).getResultList();
