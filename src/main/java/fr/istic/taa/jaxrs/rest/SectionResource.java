@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Path("/section")
+@Path("/api")
 @Produces({"application/json", "application/xml"})
 
     public class SectionResource {
@@ -31,21 +31,21 @@ import java.util.logging.Logger;
         }
 
     @GET
-    @Path("name/{sectionName}")
+    @Path("/section/name/{sectionName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Section> getSectionName(@PathParam("sectionName") String sectionName)  {
         return daosection.findByName(sectionName);
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/section/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Section getSectionById(@PathParam("id") long id)  {
         return daosection.findOne(id);
     }
 
     @GET
-    @Path("/all")
+    @Path("/section/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Section> getAllSections()  {
         return daosection.findAll();

@@ -18,7 +18,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Path("/fiches")
+@Path("/api")
 @Produces({"application/json", "application/xml"})
 public class FicheResource{
 
@@ -31,19 +31,19 @@ public class FicheResource{
 
 
     @GET
-    @Path("name/{ficheName}")
+    @Path("/fiches/name/{ficheName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Fiche> getFicheName(@PathParam("ficheName") String ficheName)  {
         return daofiche.findByName(ficheName);
     }
     @GET
-    @Path("/{id}")
+    @Path("/fiches/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Fiche getFicheId(@PathParam("id") long id)  {
         return daofiche.findOne(id);
     }
     @GET
-    @Path("/all")
+    @Path("/fiches/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Fiche> getAllFiches()  {
         return daofiche.findAll();

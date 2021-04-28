@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Path("/tableau")
+@Path("/api")
 @Produces({"application/json", "application/xml"})
 public class TableauResource  {
 
@@ -29,19 +29,19 @@ public class TableauResource  {
     }
 
     @GET
-    @Path("name/{tableauName}")
+    @Path("/tableau/name/{tableauName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tableau> getTableauName(@PathParam("tableauName") String tableauName)  {
         return daotableau.findByName(tableauName);
     }
     @GET
-    @Path("/{id}")
+    @Path("/tableau/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Tableau getTableauId(@PathParam("id") long id)  {
         return daotableau.findOne(id);
     }
     @GET
-    @Path("/all")
+    @Path("/tableau/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tableau> getAllTableaux() {
         return daotableau.findAll();

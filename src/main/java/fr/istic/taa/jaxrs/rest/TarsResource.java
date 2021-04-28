@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Path("/tags")
+@Path("/api")
 @Produces({"application/json", "application/xml"})
 public class TarsResource {
     private  static  final Logger logger =Logger.getLogger(TarsResource.class.getName());
@@ -30,20 +30,20 @@ public class TarsResource {
     }
 
     @GET
-    @Path("/name/{tagsName}")
+    @Path("/tags/name/{tagsName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tars> getTagsName(@PathParam("tagsName") String tagsName)  {
         return daotags.findByName(tagsName);
     }
     @GET
-    @Path("/{id}")
+    @Path("/tags/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Tars getTagsId(@PathParam("id") long id)  {
         return daotags.findOne(id);
     }
 
     @GET
-    @Path("/all")
+    @Path("/tags/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Tars> getTags()  {
         return daotags.findAll();
