@@ -24,7 +24,7 @@
 4. Run RestServer file
 5. The api is available to be used http://localhost:8080/api/
 
-**Integration Backfront**
+**Integration Backenf and frontend**
 6. In the following link you will find the frontend project of the application https://github.com/KarlaRosas/TP10SirFrontEnd
 7. Clone: https://github.com/KarlaRosas/TP10SirFrontEnd.git
 8. Follow the frontend project instructions in the README.md 
