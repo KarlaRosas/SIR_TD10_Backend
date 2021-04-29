@@ -33,9 +33,9 @@
 ## API REST 
 
 ## Tableau kanban:
-+ [GET] ALL: http://localhost:8080/tableau/all
-+ [GET] ID: http://localhost:8080/tableau/{id_tableu}
-+ [GET] ByName: http://localhost:8080/tableau/name/{name_tableu}
++ [GET] ALL: http://localhost:8080/api/tableau/all
++ [GET] ID: http://localhost:8080/api/tableau/{id_tableu}
++ [GET] ByName: http://localhost:8080/api/tableau/name/{name_tableu}
 
 + [POST] http://localhost:8080/api/tableau/ajouter
 + [JSON POST] {"name": "Backend"}
