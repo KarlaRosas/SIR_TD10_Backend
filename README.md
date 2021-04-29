@@ -3,8 +3,8 @@
 ### For Users
 * JRE >= 1.8
 * java IDE  (Eclispe,Intelliji Idea etc..)
-*WAMPServer
-*Phpmyadmin V5, Database server MySQL 
+* WAMPServer
+* Phpmyadmin V5, Database server MySQL 
 
 ## Getting Started
 1. https://github.com/KarlaRosas/SIR_TD10_Backend.git
