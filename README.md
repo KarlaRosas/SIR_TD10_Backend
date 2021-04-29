@@ -11,9 +11,9 @@
 2. Start WAMP server and database
 3. persistence.xml file configuration:
 
- * Configurer path, username and password of the database
- * Verify that the 'create' parameter is enabled: property name="hibernate.hbm2ddl.auto" value="create"
-  If the database is created, change the value to 'none' or 'update'
+    * Configurer path, username and password of the database
+    * Verify that the 'create' parameter is enabled: property name="hibernate.hbm2ddl.auto" value="create"
+        If the database is created, change the value 'create' to 'none' or 'update'
 
 
 **How it works**
@@ -24,7 +24,7 @@
 4. Run RestServer file
 5. The api is available to be used http://localhost:8080/api/
 
-**integration Backfront**
+**Integration Backfront**
 6. In the following link you will find the frontend project of the application https://github.com/KarlaRosas/TP10SirFrontEnd
 7. Clone: https://github.com/KarlaRosas/TP10SirFrontEnd.git
 8. Follow the frontend project instructions in the README.md 
