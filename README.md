@@ -1,13 +1,35 @@
-## JaxRS + openAPI
+# Backend Kanban
+## Prerequisites
+### For Users
+* JRE >= 1.8
+* java IDE  (Eclispe,Intelliji Idea etc..)
+*WAMPServer
+*Phpmyadmin V5, Database server MySQL 
 
-1. Import this project in your IDE, 
-2. Start the database
-3. Start the database viewer
-4. Start the backend. There is a main class to start the backend
+## Getting Started
+1. https://github.com/KarlaRosas/SIR_TD10_Backend.git
+2. Start WAMP server and database
+3. persistence.xml file configuration:
+
+ * Configurer path, username and password of the database
+ * Verify that the 'create' parameter is enabled: property name="hibernate.hbm2ddl.auto" value="create"
+  If the database is created, change the value to 'none' or 'update'
 
 
-Restart your server and access to http://localhost:8080/api/, you should access to a swagger ui instance that provides documentation on your api. 
+**How it works**
 
+1. Run the JpaTest file
+2. View the creation of the database
+3. If the database is created, change the value to 'none' or 'update' in persistance.xml property name="hibernate.hbm2ddl.auto" value="none"
+4. Run RestServer file
+5. The api is available to be used http://localhost:8080/api/
+
+**integration Backfront**
+6. In the following link you will find the frontend project of the application https://github.com/KarlaRosas/TP10SirFrontEnd
+7. Clone: https://github.com/KarlaRosas/TP10SirFrontEnd.git
+8. Follow the frontend project instructions in the README.md 
+
+ 
 ## API REST 
 
 ## Tableau kanban:
