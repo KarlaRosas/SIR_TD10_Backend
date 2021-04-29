@@ -94,3 +94,11 @@
 
 + [PUT]  http://localhost:8080/api/utilisateur/editer
 + [JSON PUT] {"id": id_utilisateur, "name": "nouveu prenom"}
+
+   
+**Authors**
+
+* Rabeaa KESSAL
+* Karla ROSAS 
+* Léo VARIERAS
+* Oliver Barais
