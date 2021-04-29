@@ -1,6 +1,4 @@
 package jpa;
-import fr.istic.taa.jaxrs.*;
-import fr.istic.taa.jaxrs.dao.generic.TagsDAO;
 import fr.istic.taa.jaxrs.domain.*;
 import fr.istic.taa.jaxrs.dao.generic.EntityManagerHelper;
 import javax.persistence.EntityManager;

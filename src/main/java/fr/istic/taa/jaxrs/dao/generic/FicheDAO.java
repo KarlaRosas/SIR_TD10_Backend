@@ -1,8 +1,6 @@
 package fr.istic.taa.jaxrs.dao.generic;
 
-import fr.istic.taa.jaxrs.domain.Fiche;
-import fr.istic.taa.jaxrs.domain.Tableau;
-import fr.istic.taa.jaxrs.domain.Utilisateur;
+import fr.istic.taa.jaxrs.domain.*;
 
 import javax.persistence.EntityTransaction;
 import java.util.List;
@@ -94,6 +92,14 @@ public class FicheDAO extends AbstractJpaDao<Fiche, Long> {
         String query = "SELECT t from Fiche as t "
                 + "where t.name='fiche1' join fetch t.utilisateurs.name";
         return EntityManagerHelper.getEntityManager().createQuery(query, Fiche.class).getResultList();
+    }
+    public void addTagFiche(Long id, Tars tag){
+        Fiche Fiche = findOne(id);
+        tag.setFiche(Fiche);
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.persist(tag);
+        transaction.commit();
     }
 
 

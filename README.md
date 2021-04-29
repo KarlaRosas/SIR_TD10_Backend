@@ -11,9 +11,20 @@ Restart your server and access to http://localhost:8080/api/, you should access 
 ## API REST 
 
 ## Tableau kanban:
-GET ALL: http://localhost:8080/tableau/all
-GET ID: http://localhost:8080/tableau/{id_tableu}
-GET ByName: http://localhost:8080/tableau/name/{name_tableu}
++ [GET] ALL: http://localhost:8080/tableau/all
++ [GET] ID: http://localhost:8080/tableau/{id_tableu}
++ [GET] ByName: http://localhost:8080/tableau/name/{name_tableu}
+
++ [POST] http://localhost:8080/api/tableau/ajouter
++ [JSON] {"name": "Backend"}
+
+
+PUT: http://localhost:8080/api/tableau/editer
+JSON
+{"id": id_tableau,
+ "name": "Nouveau_nom"}
+
+
 ## Section Kanban:
 GET ALL: http://localhost:8080/api/section/all
 GET ID: http://localhost:8080/api/section/{id_section}
@@ -33,19 +44,62 @@ Example Json:
     "name": "New_name"
 }
 
-DELETE 
 
 ## Fiche kanban:
 GET ALL: http://localhost:8080/api/fiches/all
 GET ID: http://localhost:8080/api/fiches/{id_fiche}
 GET ByName : http://localhost:8080/api/fiches/namefiche/{name_fiche}
+
+POST http://localhost:8080/api/fiches/ajouter
+JSON
+{
+        "name": "FichePOST",
+        "url": "kanban.com",
+        "lieu": "Rennes",
+        "tempsMinutes": 10
+}
+
+AJOUTER UN TAG A UN FICHE
+POST: http://localhost:8080/api/fiches/{id_fiche}/ajouter-tag
+JSON
+{   "name":"Priority0"}
+
+PUT:  http://localhost:8080/api/fiches/editer
+JSON:
+{
+        "id": 2,
+        "name": "Fiche 2",
+        "url": "kanban.com",
+        "lieu": "Rennes",
+        "tempsMinutes": 10
+}
+
+
 ## Tags kanban:
 GET ALL: http://localhost:8080/api/tags/all
 GET ID : http://localhost:8080/api/tags/{id_tag}
 GET ByName : http://localhost:8080/api/tags/name/{name_tag}
+
+POST http://localhost:8080/api/tags/ajouter
+JSON
+{"name": "name_tag"}
+
+PUT http://localhost:8080/api/tags/editer
+JSON
+{"id": id_tag, "name": "Priority5"}
+
+
 ## Utilisateur kanban:
 GET ALL: http://localhost:8080/api/utilisateur/all
 GET ID : http://localhost:8080/api/utilisateur/{id_utilisateur}
 GET ByName : http://localhost:8080/api/utilisateur/name/{name_utilisateur}
 
-POST 
+POST http://localhost:8080/api/utilisateur/ajouter
+JSON{ "name": "name"}
+
+PUT http://localhost:8080/api/utilisateur/editer
+JSON
+{
+        "id": id_utilisateur,
+        "name": "nouveu prenom"
+}

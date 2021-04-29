@@ -1,19 +1,11 @@
 package fr.istic.taa.jaxrs.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import fr.istic.taa.jaxrs.dao.generic.FicheDAO;
-import fr.istic.taa.jaxrs.dao.generic.FicheDAO;
 import fr.istic.taa.jaxrs.domain.Fiche;
-import fr.istic.taa.jaxrs.domain.Utilisateur;
-import io.swagger.v3.oas.annotations.Parameter;
+import fr.istic.taa.jaxrs.domain.Tars;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -36,17 +28,42 @@ public class FicheResource{
     public List<Fiche> getFicheName(@PathParam("ficheName") String ficheName)  {
         return daofiche.findByName(ficheName);
     }
+
     @GET
     @Path("/fiches/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Fiche getFicheId(@PathParam("id") long id)  {
         return daofiche.findOne(id);
     }
+
     @GET
     @Path("/fiches/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Fiche> getAllFiches()  {
         return daofiche.findAll();
+    }
+
+    @POST
+    @Path("fiches/ajouter")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void addFiche(@PathParam("id") Long id, Fiche fiche){
+        daofiche.save(fiche);
+    }
+    @POST
+    @Path("/fiches/{id_fiche}/ajouter-tag")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public void addTagFiche(@PathParam("id_fiche") Long id, Tars tag){
+        daofiche.addTagFiche(id, tag);
+    }
+
+    @PUT
+    @Path("/fiches/editer")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Fiche editFiche(Fiche fiche){
+        return daofiche.update(fiche);
     }
 /*
     @POST
