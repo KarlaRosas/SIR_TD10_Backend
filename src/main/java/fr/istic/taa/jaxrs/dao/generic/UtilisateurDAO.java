@@ -5,8 +5,9 @@ import fr.istic.taa.jaxrs.domain.Utilisateur;
 
 import java.util.List;
 
+/**Query Utilisateur**/
 
-    public class UtilisateurDAO extends AbstractJpaDao<Utilisateur, Long> {
+public class UtilisateurDAO extends AbstractJpaDao<Utilisateur, Long> {
         public UtilisateurDAO() {
             super(Utilisateur.class);
         }

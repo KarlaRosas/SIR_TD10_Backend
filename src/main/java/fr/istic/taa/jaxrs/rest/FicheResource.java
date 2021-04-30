@@ -50,6 +50,7 @@ public class FicheResource{
     public void addFiche(@PathParam("id") Long id, Fiche fiche){
         daofiche.save(fiche);
     }
+
     @POST
     @Path("/fiches/{id_fiche}/ajouter-tag")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -65,35 +66,4 @@ public class FicheResource{
     public Fiche editFiche(Fiche fiche){
         return daofiche.update(fiche);
     }
-/*
-    @POST
-    @Path("/ajouter/")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Fiche createUtilisateur(Fiche u) {
-        return  this.daofiche.save(u);
-    }
-
-    public Response addUtilisateur(
-            @Parameter(description = "User object that needs to be added to the store", required = true) Utilisateur utilisateur) {
-        return Response.ok().entity("SUCCESS").build();
-    }*/
 }
-/*@Path("/fiche")
-@Produces({"application/json", "application/xml"})
-public class FicheResource {
-
-    @GET
-    @Path("/{ficheId}")
-    public Fiche getFicheById(@PathParam("ficheId") Long ficheId)  {
-
-        return new Fiche();
-    }
-
-    @POST
-    @Consumes("application/json")
-    public Response addFiche(
-            @Parameter(description = "Fiche object that needs to be added to the store", required = true) Fiche fiche) {
-        return Response.ok().entity("SUCCESS").build();
-    }
-}*/

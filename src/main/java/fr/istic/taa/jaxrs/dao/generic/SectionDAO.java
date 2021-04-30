@@ -3,7 +3,7 @@ package fr.istic.taa.jaxrs.dao.generic;
 import fr.istic.taa.jaxrs.domain.Fiche;
 import fr.istic.taa.jaxrs.domain.Section;
 import fr.istic.taa.jaxrs.domain.Tableau;
-import fr.istic.taa.jaxrs.domain.Tableau;
+
 
 import javax.persistence.EntityTransaction;
 import java.util.List;
@@ -15,14 +15,6 @@ public class SectionDAO extends AbstractJpaDao<Section, Long> {
         super(Section.class);
     }
 
-    public void updateSection(Long id, Section section){
-        Section sections = findOne(id);
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-        entityManager.merge(section);
-        transaction.commit();
-
-    }
 
     public List<Section> findByName(String name) {
         return EntityManagerHelper.getEntityManager().createQuery("select u from Section as u where u.name = :name", Section.class)
@@ -75,6 +67,14 @@ public class SectionDAO extends AbstractJpaDao<Section, Long> {
         String query = "select t from Section as t join t.fiches as a where a.name=:name";
         return EntityManagerHelper.getEntityManager().createQuery(query, Section.class)
                 .setParameter("name", name).getResultList();
+    }
+    public void updateSection(Long id, Section section){
+        Section sections = findOne(id);
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.merge(section);
+        transaction.commit();
+
     }
 
 }

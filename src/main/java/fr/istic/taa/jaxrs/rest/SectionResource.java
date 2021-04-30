@@ -24,8 +24,7 @@ import java.util.logging.Logger;
     @Path("/section/name/{sectionName}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Section> getSectionName(@PathParam("sectionName") String sectionName)  {
-        return daosection.findByName(sectionName);
-    }
+        return daosection.findByName(sectionName); }
 
     @GET
     @Path("/section/{id}")
@@ -55,7 +54,6 @@ import java.util.logging.Logger;
     public Section editSection(Section sec){
         return daosection.update(sec);
     }
-
 
 
 }

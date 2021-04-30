@@ -26,6 +26,7 @@ public class TarsResource {
     public List<Tars> getTagsName(@PathParam("tagsName") String tagsName)  {
         return daotags.findByName(tagsName);
     }
+
     @GET
     @Path("/tags/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,6 +48,7 @@ public class TarsResource {
     public void addTag(@PathParam("id") Long id, Tars tag){
         daotags.save(tag);
     }
+
     @PUT
     @Path("/tags/editer")
     @Consumes(MediaType.APPLICATION_JSON)
