@@ -4,6 +4,7 @@
 * JRE >= 1.8
 * java IDE  (Eclispe,Intelliji Idea etc..)
 * WAMPServer
+* Maven
 * Phpmyadmin V5, Database server MySQL 
 
 ## Getting Started
